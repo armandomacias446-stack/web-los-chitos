@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Los Chitos</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Los Chitos, pa' los antojitos. Totos, tacos, tortas ahogadas, limonadas y nieves en Av. Universidad 289 B, Zacatecas. Área de juegos para niños.">
+<meta property="og:title" content="Los Chitos — Pa' los antojitos">
+<meta property="og:description" content="Totos, tacos y tortas ahogadas en Zacatecas. Con área de juegos para los niños.">
+<meta property="og:image" content="img/local-general.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="img/icono-t.png">
+<link rel="apple-touch-icon" href="img/icono.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
+
+<!--
+  ===========================================================
+  MEDICIÓN — Google Analytics 4
+  Cuando tengas tu ID de GA4 (se ve así: G-ABC1234XYZ),
+  reemplázalo en las DOS líneas marcadas con  ID_DE_GA4  más abajo,
+  dentro del <script> que está al final de este archivo.
+  Mientras no lo pongas, la página funciona igual, sólo no mide.
+  ===========================================================
+-->
+
+<style>
+/* Layout: bandas de color a todo lo ancho, contenido centrado en una columna de 1100px.
+   Identidad tomada del logo y del local: rojo y amarillo saturados sobre crema. */
+:root{
+  --rojo:#E3242B;
+  --rojo-osc:#A81419;
+  --amarillo:#FFC810;
+  --naranja:#FF6B1A;
+  --rosa:#EC1A6B;
+  --crema:#FFF6E9;
+  --papel:#FFFFFF;
+  --tinta:#2B1A12;
+  --tinta-suave:#7A6155;
+  --display:"Fredoka","Trebuchet MS",system-ui,sans-serif;
+  --texto:"DM Sans","Helvetica Neue",Arial,sans-serif;
+  color-scheme:light;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--crema);
+  color:var(--tinta);
+  font-family:var(--texto);
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+
+/* barra superior ------------------------------------------------ */
+body::before{
+  content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);
+  z-index:60;background:var(--rojo);
+}
+.barra{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:50;
+  background:var(--rojo);color:#fff;
+}
+.barra .dentro{
+  max-width:1100px;margin:0 auto;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:8px;
+  display:flex;align-items:center;gap:14px;
+}
+.barra img{height:34px;width:auto;flex:none}
+.barra nav{
+  margin-left:auto;display:flex;gap:4px;flex-wrap:wrap;
+  font-family:var(--display);font-weight:600;font-size:14px;
+}
+.barra nav a{
+  text-decoration:none;padding:6px 10px;border-radius:999px;
+  transition:background .15s ease;white-space:nowrap;
+}
+.barra nav a:hover,.barra nav a:focus-visible{background:rgba(255,255,255,.18)}
+@media (max-width:620px){ .barra nav a{padding:5px 8px;font-size:13px} .barra img{height:28px} }
+
+/* bandas --------------------------------------------------------- */
+.banda{position:relative}
+.dentro{
+  max-width:1100px;margin:0 auto;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:clamp(44px,7vw,84px);
+}
+.banda--crema{background:var(--crema)}
+.banda--papel{background:var(--papel)}
+.banda--roja{background:var(--rojo);color:#fff}
+.banda--amarilla{background:var(--amarillo)}
+
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.05;text-wrap:balance;margin:0}
+h2{font-size:clamp(30px,5.2vw,48px);letter-spacing:-.01em}
+h3{font-size:clamp(20px,2.6vw,25px)}
+p{margin:0}
+.ojo{
+  font-family:var(--display);font-weight:600;font-size:13px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--rojo);margin:0 0 10px;
+}
+.banda--roja .ojo{color:var(--amarillo)}
+.banda--amarilla .ojo{color:var(--rojo-osc)}
+.bajada{max-width:62ch;font-size:clamp(16px,1.6vw,18px);margin-top:16px}
+
+/* botones -------------------------------------------------------- */
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.btn{
+  font-family:var(--display);font-weight:600;font-size:16px;
+  text-decoration:none;border:0;cursor:pointer;
+  padding:13px 24px;border-radius:999px;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:transform .12s ease,box-shadow .12s ease,background .12s ease;
+}
+.btn:hover,.btn:focus-visible{transform:translateY(-2px)}
+.btn--amarillo{background:var(--amarillo);color:var(--tinta);box-shadow:0 4px 0 #C99A00}
+.btn--amarillo:hover{box-shadow:0 6px 0 #C99A00}
+.btn--rojo{background:var(--rojo);color:#fff;box-shadow:0 4px 0 var(--rojo-osc)}
+.btn--rojo:hover{box-shadow:0 6px 0 var(--rojo-osc)}
+.btn--linea{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.75)}
+.btn--linea:hover{background:rgba(255,255,255,.14)}
+:focus-visible{outline:3px solid var(--naranja);outline-offset:3px}
+.barra :focus-visible,.portada :focus-visible{outline-color:#fff}
+
+/* portada -------------------------------------------------------- */
+.portada{position:relative;background:var(--rojo-osc);color:#fff;overflow:hidden}
+.portada img.fondo{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:.38;
+}
+.portada .velo{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(168,20,25,.86) 0%,rgba(168,20,25,.6) 45%,rgba(168,20,25,.94) 100%);
+}
+.portada .dentro{position:relative;text-align:center;padding-block:clamp(40px,8vw,76px)}
+.portada .marca{width:min(260px,62vw);margin:0 auto 22px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.3))}
+.portada h1{font-size:clamp(34px,7vw,66px);text-shadow:0 4px 16px rgba(0,0,0,.35)}
+.portada .lema{
+  font-family:var(--display);font-weight:500;
+  font-size:clamp(17px,2.4vw,22px);margin-top:14px;
+  max-width:46ch;margin-left:auto;margin-right:auto;
+}
+.portada .btns{justify-content:center}
+.tiras{display:flex;height:10px}
+.tiras span{flex:1}
+
+/* abierto -------------------------------------------------------- */
+.abierto{
+  display:inline-flex;align-items:center;gap:9px;
+  background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);
+  padding:7px 16px;border-radius:999px;margin-bottom:20px;
+  font-family:var(--display);font-weight:600;font-size:14px;
+}
+.punto{width:9px;height:9px;border-radius:50%;background:#49D16B;box-shadow:0 0 0 4px rgba(73,209,107,.25)}
+.punto.cerrado{background:var(--amarillo);box-shadow:0 0 0 4px rgba(255,200,16,.25)}
+
+/* nosotros ------------------------------------------------------- */
+.dos{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,54px);align-items:center}
+@media (max-width:780px){ .dos{grid-template-columns:1fr} }
+.dos img{border-radius:22px;box-shadow:0 14px 34px rgba(43,26,18,.16)}
+.valores{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:30px}
+.valor{background:var(--papel);border-radius:18px;padding:18px 18px 20px;border:2px solid #F3E2CB}
+.valor strong{display:block;font-family:var(--display);font-size:17px;margin-bottom:4px}
+.valor span{font-size:15px;color:var(--tinta-suave);line-height:1.45;display:block}
+
+/* menú ----------------------------------------------------------- */
+.tabs{display:flex;flex-wrap:wrap;gap:9px;margin:26px 0 28px}
+.tab{
+  font-family:var(--display);font-weight:600;font-size:15px;
+  background:var(--papel);color:var(--tinta);border:2px solid #F0DCC2;
+  padding:9px 18px;border-radius:999px;cursor:pointer;
+  transition:all .14s ease;
+}
+.tab:hover{border-color:var(--naranja)}
+.tab[aria-selected="true"]{background:var(--rojo);border-color:var(--rojo);color:#fff}
+.carta{background:var(--papel);border-radius:24px;padding:clamp(20px,3vw,34px);border:2px solid #F3E2CB}
+.carta h3{margin-bottom:4px}
+.nota-carta{font-size:14px;color:var(--tinta-suave);margin-bottom:18px}
+.encabezado-precios{
+  display:grid;gap:10px;align-items:end;
+  padding:0 0 10px;border-bottom:2px dashed #EFD9BC;
+  font-family:var(--display);font-weight:600;font-size:13px;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--tinta-suave);
+}
+.fila{
+  display:grid;gap:10px;align-items:center;
+  padding:13px 0;border-bottom:1px dashed #EFD9BC;
+}
+.fila:last-child{border-bottom:0}
+.fila .nombre{font-family:var(--display);font-weight:600;font-size:17px}
+.fila .nombre small{display:block;font-family:var(--texto);font-weight:400;font-size:13.5px;color:var(--tinta-suave);line-height:1.35}
+.precio{
+  font-family:var(--display);font-weight:700;font-size:19px;color:var(--rojo);
+  text-align:right;font-variant-numeric:tabular-nums;
+}
+.c2{grid-template-columns:1fr 92px}
+.c3{grid-template-columns:1fr 92px 92px}
+.c4{grid-template-columns:1fr 84px 84px 84px}
+/* en pantalla ancha los precios son columnas de la rejilla */
+.precios-mov,.precios-mov .par{display:contents}
+.precios-mov .par em{display:none}
+/* en celular cada precio lleva su etiqueta debajo del nombre */
+@media (max-width:620px){
+  .encabezado-precios.c3,.encabezado-precios.c4{display:none}
+  .fila.c3,.fila.c4{grid-template-columns:1fr;gap:0}
+  .fila.c3 .precios-mov,.fila.c4 .precios-mov{display:flex;gap:18px;flex-wrap:wrap;margin-top:8px}
+  .fila.c3 .precios-mov .par,.fila.c4 .precios-mov .par{display:flex;flex-direction:column}
+  .fila.c3 .precios-mov .par em,.fila.c4 .precios-mov .par em{
+    display:block;font-style:normal;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--tinta-suave);font-family:var(--display);font-weight:600;
+  }
+  .fila.c3 .precios-mov .precio,.fila.c4 .precios-mov .precio{text-align:left;font-size:19px}
+}
+.aviso{
+  margin-top:22px;background:var(--amarillo);border-radius:16px;
+  padding:14px 18px;font-size:15px;font-weight:500;
+}
+.galeria-menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:28px}
+.galeria-menu img{border-radius:18px;aspect-ratio:4/5;object-fit:cover;width:100%}
+
+/* niños ---------------------------------------------------------- */
+.ninos{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,4vw,50px);align-items:center}
+@media (max-width:820px){ .ninos{grid-template-columns:1fr} }
+.marco-video{
+  border-radius:26px;overflow:hidden;background:#000;
+  box-shadow:0 18px 44px rgba(0,0,0,.28);max-width:330px;width:100%;margin:0 auto;
+}
+.marco-video video{width:100%;height:auto;display:block;aspect-ratio:478/850}
+.caja-aviso{
+  background:rgba(255,255,255,.14);border:2px dashed rgba(255,255,255,.5);
+  border-radius:20px;padding:20px 22px;margin-top:24px;
+}
+.caja-aviso strong{font-family:var(--display);font-size:18px;display:block;margin-bottom:6px}
+
+/* instalaciones -------------------------------------------------- */
+.mosaico{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:30px}
+.mosaico figure{margin:0;border-radius:22px;overflow:hidden;position:relative;background:#EBDCC6}
+.mosaico img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/4}
+.mosaico figure.ancha{grid-column:span 2}
+.mosaico figure.ancha img{aspect-ratio:16/10}
+@media (max-width:560px){ .mosaico figure.ancha{grid-column:span 1} }
+.mosaico figcaption{
+  position:absolute;left:0;right:0;bottom:0;
+  background:linear-gradient(to top,rgba(43,26,18,.86),transparent);
+  color:#fff;font-family:var(--display);font-weight:600;font-size:15px;padding:30px 16px 14px;
+}
+
+/* visítanos ------------------------------------------------------ */
+.datos{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:18px;margin-top:28px}
+.dato{background:var(--papel);border-radius:20px;padding:20px 22px;border:2px solid #F3E2CB}
+.dato .et{
+  font-family:var(--display);font-weight:600;font-size:12.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--rojo);margin-bottom:7px;
+}
+.dato p{font-size:16px;line-height:1.5}
+.dato a{font-weight:700;text-decoration:none;color:var(--rojo);border-bottom:2px solid rgba(227,36,43,.3)}
+.horario{list-style:none;margin:0;padding:0;font-variant-numeric:tabular-nums}
+.horario li{display:flex;justify-content:space-between;gap:16px;padding:3px 0;font-size:15.5px}
+.apps{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.app{
+  font-family:var(--display);font-weight:600;font-size:14px;
+  padding:8px 16px;border-radius:999px;background:var(--crema);border:2px solid #F0DCC2;
+}
+
+/* facturación ---------------------------------------------------- */
+.pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:24px;counter-reset:p}
+.paso{background:rgba(255,255,255,.55);border-radius:16px;padding:16px 18px;font-size:15.5px;line-height:1.45}
+.paso::before{
+  counter-increment:p;content:counter(p);
+  display:flex;align-items:center;justify-content:center;
+  width:28px;height:28px;border-radius:50%;background:var(--rojo);color:#fff;
+  font-family:var(--display);font-weight:700;font-size:15px;margin-bottom:9px;
+}
+
+/* pie ------------------------------------------------------------ */
+.pie{background:var(--tinta);color:#F6E8D8}
+.pie .dentro{padding-block:40px;text-align:center}
+.pie img{width:150px;margin:0 auto 18px}
+.redes{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:18px 0 22px}
+.red{
+  font-family:var(--display);font-weight:600;font-size:15px;text-decoration:none;
+  padding:10px 20px;border-radius:999px;background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.2);transition:background .15s ease;
+}
+.red:hover{background:rgba(255,255,255,.2)}
+.pie small{display:block;font-size:13.5px;color:#BCA595;line-height:1.6}
+</style>
+</head>
+<body>
+
+<header class="barra">
+  <div class="dentro">
+    <img src="img/logo-t.png" alt="Los Chitos">
+    <nav>
+      <a href="#nosotros" data-ev="nav_nosotros">Nosotros</a>
+      <a href="#menu" data-ev="nav_menu">Menú</a>
+      <a href="#ninos" data-ev="nav_ninos">Niños</a>
+      <a href="#local" data-ev="nav_local">El local</a>
+      <a href="#visitanos" data-ev="nav_visitanos">Visítanos</a>
+    </nav>
+  </div>
+</header>
+
+<!-- PORTADA ------------------------------------------------------ -->
+<section class="portada banda">
+  <img class="fondo" src="img/local-general.jpg" alt="" aria-hidden="true">
+  <div class="velo"></div>
+  <div class="dentro">
+    <img class="marca" src="img/logo-t.png" alt="Los Chitos — Pa' los antojitos">
+    <p class="abierto"><span class="punto" id="punto"></span><span id="estado">Todos los días de 12:00 a 23:00</span></p>
+    <h1>Cuando pega el antojito</h1>
+    <p class="lema">Totos, tacos y tortas ahogadas en Zacatecas. Con área de juegos para que los niños también la pasen bien.</p>
+    <div class="btns">
+      <a class="btn btn--amarillo" href="#menu" data-ev="portada_menu">Ver el menú</a>
+      <a class="btn btn--linea" href="https://maps.app.goo.gl/ZBdXawP2Q5tKkXSF7" target="_blank" rel="noopener" data-ev="como_llegar">Cómo llegar</a>
+    </div>
+  </div>
+  <div class="tiras" aria-hidden="true">
+    <span style="background:var(--amarillo)"></span>
+    <span style="background:var(--naranja)"></span>
+    <span style="background:var(--rosa)"></span>
+    <span style="background:#2FA8E0"></span>
+    <span style="background:#5CC43E"></span>
+  </div>
+</section>
+
+<!-- NOSOTROS ----------------------------------------------------- -->
+<section class="banda banda--crema" id="nosotros">
+  <div class="dentro">
+    <div class="dos">
+      <div>
+        <p class="ojo">Sobre nosotros</p>
+        <h2>La buena comida se disfruta mejor en comunidad</h2>
+        <p class="bajada">Preparamos cada platillo con ingredientes frescos y con el mismo cuidado de siempre, para que el sabor sea igual de bueno cada vez que vengas. Te atendemos rápido, con calidez y en un ambiente donde toda la familia se siente en casa.</p>
+        <p class="bajada">Y si algo no te encanta, te lo cambiamos o te devolvemos tu dinero. Así de simple.</p>
+      </div>
+      <img src="img/mural.jpg" alt="Mural de Los Chitos con la frase Toto sabe de antojos" loading="lazy">
+    </div>
+
+    <div class="valores">
+      <div class="valor"><strong>Ingredientes frescos</strong><span>Compramos y preparamos cada día para que el sabor no cambie.</span></div>
+      <div class="valor"><strong>Servicio rápido</strong><span>Pides, te sientas y en minutos está en tu mesa.</span></div>
+      <div class="valor"><strong>Garantía de satisfacción</strong><span>¿No te gustó? Te lo cambiamos o te regresamos tu dinero.</span></div>
+      <div class="valor"><strong>Pa' toda la familia</strong><span>Comedor amplio, área de juegos y sillas para los más chiquitos.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MENÚ --------------------------------------------------------- -->
+<section class="banda banda--papel" id="menu">
+  <div class="dentro">
+    <p class="ojo">El menú</p>
+    <h2>Lo que te vas a querer comer</h2>
+    <p class="bajada">Nuestra especialidad son los Totos, pero aquí nadie se va con el antojo pendiente.</p>
+
+    <div class="tabs" role="tablist" aria-label="Categorías del menú">
+      <button class="tab" role="tab" aria-selected="true" data-cat="totos">Totos</button>
+      <button class="tab" role="tab" aria-selected="false" data-cat="maiz">Tacos de maíz</button>
+      <button class="tab" role="tab" aria-selected="false" data-cat="harina">Tacos de harina</button>
+      <button class="tab" role="tab" aria-selected="false" data-cat="ahogados">Tacos ahogados</button>
+      <button class="tab" role="tab" aria-selected="false" data-cat="tortas">Tortas ahogadas</button>
+      <button class="tab" role="tab" aria-selected="false" data-cat="bebidas">Bebidas</button>
+      <button class="tab" role="tab" aria-selected="false" data-cat="postres">Postres y extras</button>
+    </div>
+
+    <!-- TOTOS -->
+    <div class="carta" data-panel="totos">
+      <h3>Totos · la especialidad de la casa</h3>
+      <p class="nota-carta">Totopos recién hechos con tu guisado, queso, cebolla y cilantro.</p>
+      <div class="encabezado-precios c4"><span>Platillo</span><span class="precio">Mini 120 g</span><span class="precio">Normal 235 g</span><span class="precio">Grande 300 g</span></div>
+      <div class="fila c4"><span class="nombre">Totos Vaqueros<small>Totos de bistec</small></span><span class="precios-mov"><span class="par"><em>Mini</em><span class="precio">$90</span></span><span class="par"><em>Normal</em><span class="precio">$120</span></span><span class="par"><em>Grande</em><span class="precio">$150</span></span></span></div>
+      <div class="fila c4"><span class="nombre">Totos Pastorcito<small>Totos de pastor</small></span><span class="precios-mov"><span class="par"><em>Mini</em><span class="precio">$90</span></span><span class="par"><em>Normal</em><span class="precio">$120</span></span><span class="par"><em>Grande</em><span class="precio">$150</span></span></span></div>
+      <div class="fila c4"><span class="nombre">Totos Pibil<small>Totos de cochinita pibil</small></span><span class="precios-mov"><span class="par"><em>Mini</em><span class="precio">$90</span></span><span class="par"><em>Normal</em><span class="precio">$120</span></span><span class="par"><em>Grande</em><span class="precio">$150</span></span></span></div>
+      <div class="fila c4"><span class="nombre">Totos Chitos<small>Totos mixtos</small></span><span class="precios-mov"><span class="par"><em>Mini</em><span class="precio">$90</span></span><span class="par"><em>Normal</em><span class="precio">$120</span></span><span class="par"><em>Grande</em><span class="precio">$150</span></span></span></div>
+    </div>
+
+    <!-- TACOS DE MAÍZ -->
+    <div class="carta" data-panel="maiz" hidden>
+      <h3>Tacos de maíz</h3>
+      <p class="nota-carta">96 g por taco sin queso · 120 g con queso.</p>
+      <div class="encabezado-precios c3"><span>Guisado</span><span class="precio">Sin queso</span><span class="precio">Con queso</span></div>
+      <div class="fila c3"><span class="nombre">Bistec</span><span class="precios-mov"><span class="par"><em>Sin queso</em><span class="precio">$40</span></span><span class="par"><em>Con queso</em><span class="precio">$50</span></span></span></div>
+      <div class="fila c3"><span class="nombre">Cochinita</span><span class="precios-mov"><span class="par"><em>Sin queso</em><span class="precio">$35</span></span><span class="par"><em>Con queso</em><span class="precio">$45</span></span></span></div>
+      <div class="fila c3"><span class="nombre">Pastor</span><span class="precios-mov"><span class="par"><em>Sin queso</em><span class="precio">$35</span></span><span class="par"><em>Con queso</em><span class="precio">$45</span></span></span></div>
+    </div>
+
+    <!-- TACOS DE HARINA -->
+    <div class="carta" data-panel="harina" hidden>
+      <h3>Tacos de harina</h3>
+      <p class="nota-carta">Tortilla de harina a la plancha. Pídelo quesadilla y queda bañado en queso.</p>
+      <div class="encabezado-precios c3"><span>Guisado</span><span class="precio">Sin queso</span><span class="precio">Quesadilla</span></div>
+      <div class="fila c3"><span class="nombre">Bistec</span><span class="precios-mov"><span class="par"><em>Sin queso</em><span class="precio">$50</span></span><span class="par"><em>Quesadilla</em><span class="precio">$60</span></span></span></div>
+      <div class="fila c3"><span class="nombre">Cochinita</span><span class="precios-mov"><span class="par"><em>Sin queso</em><span class="precio">$45</span></span><span class="par"><em>Quesadilla</em><span class="precio">$55</span></span></span></div>
+      <div class="fila c3"><span class="nombre">Pastor</span><span class="precios-mov"><span class="par"><em>Sin queso</em><span class="precio">$45</span></span><span class="par"><em>Quesadilla</em><span class="precio">$55</span></span></span></div>
+    </div>
+
+    <!-- TACOS AHOGADOS -->
+    <div class="carta" data-panel="ahogados" hidden>
+      <h3>Tacos ahogados</h3>
+      <p class="nota-carta">Bañados en salsa, como debe de ser.</p>
+      <div class="encabezado-precios c3"><span>Guisado</span><span class="precio">Sin queso</span><span class="precio">Quesadilla</span></div>
+      <div class="fila c3"><span class="nombre">Bistec</span><span class="precios-mov"><span class="par"><em>Sin queso</em><span class="precio">$60</span></span><span class="par"><em>Quesadilla</em><span class="precio">$70</span></span></span></div>
+      <div class="fila c3"><span class="nombre">Cochinita</span><span class="precios-mov"><span class="par"><em>Sin queso</em><span class="precio">$55</span></span><span class="par"><em>Quesadilla</em><span class="precio">$65</span></span></span></div>
+      <div class="fila c3"><span class="nombre">Pastor</span><span class="precios-mov"><span class="par"><em>Sin queso</em><span class="precio">$55</span></span><span class="par"><em>Quesadilla</em><span class="precio">$65</span></span></span></div>
+    </div>
+
+    <!-- TORTAS AHOGADAS -->
+    <div class="carta" data-panel="tortas" hidden>
+      <h3>Tortas ahogadas</h3>
+      <p class="nota-carta">Lo nuevo de la casa.</p>
+      <div class="encabezado-precios c3"><span>Guisado</span><span class="precio">Sin queso</span><span class="precio">Con queso</span></div>
+      <div class="fila c3"><span class="nombre">Bistec</span><span class="precios-mov"><span class="par"><em>Sin queso</em><span class="precio">$110</span></span><span class="par"><em>Con queso</em><span class="precio">$120</span></span></span></div>
+      <div class="fila c3"><span class="nombre">Cochinita</span><span class="precios-mov"><span class="par"><em>Sin queso</em><span class="precio">$110</span></span><span class="par"><em>Con queso</em><span class="precio">$120</span></span></span></div>
+      <div class="fila c3"><span class="nombre">Pastor</span><span class="precios-mov"><span class="par"><em>Sin queso</em><span class="precio">$110</span></span><span class="par"><em>Con queso</em><span class="precio">$120</span></span></span></div>
+    </div>
+
+    <!-- BEBIDAS -->
+    <div class="carta" data-panel="bebidas" hidden>
+      <h3>Bebidas</h3>
+      <p class="nota-carta">Nuestras limonadas de fresa y arándano, hechas aquí mismo.</p>
+      <div class="fila c2"><span class="nombre">Limonada de arándano<small>Refill — rellénala las veces que quieras</small></span><span class="precio">$50</span></div>
+      <div class="fila c2"><span class="nombre">Limonada de fresa<small>Refill — rellénala las veces que quieras</small></span><span class="precio">$50</span></div>
+      <div class="fila c2"><span class="nombre">Limonada de arándano<small>480 ml</small></span><span class="precio">$40</span></div>
+      <div class="fila c2"><span class="nombre">Limonada de fresa<small>480 ml</small></span><span class="precio">$40</span></div>
+      <div class="fila c2"><span class="nombre">Refresco<small>600 ml</small></span><span class="precio">$45</span></div>
+      <div class="fila c2"><span class="nombre">Malteadas<small>Chocolate o vainilla</small></span><span class="precio">$70</span></div>
+    </div>
+
+    <!-- POSTRES Y EXTRAS -->
+    <div class="carta" data-panel="postres" hidden>
+      <h3>Postres</h3>
+      <p class="nota-carta">Para cerrar con algo dulce.</p>
+      <div class="fila c2"><span class="nombre">Nieve en cono</span><span class="precio">$20</span></div>
+      <div class="fila c2"><span class="nombre">Nieve en cono con chocolate</span><span class="precio">$25</span></div>
+      <div class="fila c2"><span class="nombre">Nieve en vaso</span><span class="precio">$40</span></div>
+      <div class="fila c2"><span class="nombre">Nieve en vaso mini</span><span class="precio">$25</span></div>
+      <h3 style="margin-top:28px">Extras</h3>
+      <p class="nota-carta">Para ponerle todavía más.</p>
+      <div class="fila c2"><span class="nombre">Consomé<small>8 oz</small></span><span class="precio">$15</span></div>
+      <div class="fila c2"><span class="nombre">Crema<small>2 oz</small></span><span class="precio">$10</span></div>
+      <div class="fila c2"><span class="nombre">Queso<small>2 oz</small></span><span class="precio">$10</span></div>
+      <div class="fila c2"><span class="nombre">Queso amarillo<small>2 oz</small></span><span class="precio">$10</span></div>
+    </div>
+
+    <p class="aviso">Todos los pedidos para llevar se acompañan diferente dependiendo del artículo.</p>
+
+    <div class="galeria-menu">
+      <img src="img/totos.jpg" alt="Totos con limonadas de fresa y arándano" loading="lazy">
+      <img src="img/mesa-completa.jpg" alt="Totos, tacos de harina de bistec y cochinita con limonadas" loading="lazy">
+      <img src="img/malteadas.jpg" alt="Malteadas con crema batida y galleta" loading="lazy">
+      <img src="img/nieves.jpg" alt="Nieves en vaso con galleta y chispas de colores" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- NIÑOS -------------------------------------------------------- -->
+<section class="banda banda--roja" id="ninos">
+  <div class="dentro">
+    <div class="ninos">
+      <div class="marco-video">
+        <video src="video/juegos.mp4" poster="img/juegos-poster.jpg" autoplay muted loop playsinline preload="metadata" data-ev="ver_video_juegos" aria-label="Área de juegos de Los Chitos"></video>
+      </div>
+      <div>
+        <p class="ojo">Pa' los niños</p>
+        <h2>Aquí los niños también vienen a jugar</h2>
+        <p class="bajada">Mientras tú te tomas tu limonada con calma, ellos se trepan, se resbalan y se cansan. Nuestra área de juegos está dentro del comedor, a la vista, para que comas tranquilo.</p>
+        <div class="caja-aviso">
+          <strong>¿Buscas el paquete para niños?</strong>
+          <p>Estamos afinando los detalles. Mientras tanto, pregunta en sucursal o mándanos un WhatsApp y con gusto te lo explicamos.</p>
+          <div class="btns" style="margin-top:16px">
+            <a class="btn btn--amarillo" href="https://wa.me/524921778889" target="_blank" rel="noopener" data-ev="whatsapp_paquete_ninos">Preguntar por WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EL LOCAL ----------------------------------------------------- -->
+<section class="banda banda--crema" id="local">
+  <div class="dentro">
+    <p class="ojo">Nuestras instalaciones</p>
+    <h2>Así se ve por dentro</h2>
+    <p class="bajada">Color por todos lados, mesas amplias y espacio para que quepa toda la familia.</p>
+    <div class="mosaico">
+      <figure class="ancha">
+        <img src="img/local-general.jpg" alt="Vista general del comedor con el mostrador y el área de juegos al fondo" loading="lazy">
+        <figcaption>El comedor y el área de juegos</figcaption>
+      </figure>
+      <figure>
+        <img src="img/mural.jpg" alt="Mural con la frase Toto sabe de antojos" loading="lazy">
+        <figcaption>El mural de la entrada</figcaption>
+      </figure>
+      <figure>
+        <img src="img/comedor.jpg" alt="Sillón amarillo y sillas naranjas del comedor" loading="lazy">
+        <figcaption>Mesas pa' sentarse a gusto</figcaption>
+      </figure>
+      <figure>
+        <img src="img/limonadas.jpg" alt="Dos limonadas frente al letrero Pa' los antojitos" loading="lazy">
+        <figcaption>El letrero donde todos se toman la foto</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- VISÍTANOS ---------------------------------------------------- -->
+<section class="banda banda--papel" id="visitanos">
+  <div class="dentro">
+    <p class="ojo">Visítanos</p>
+    <h2>Te esperamos</h2>
+
+    <div class="datos">
+      <div class="dato">
+        <p class="et">Dirección</p>
+        <p>Av. Universidad 289 B<br>La Loma, Zacatecas, Zac.<br>C.P. 98068</p>
+        <div class="btns" style="margin-top:16px">
+          <a class="btn btn--rojo" href="https://maps.app.goo.gl/ZBdXawP2Q5tKkXSF7" target="_blank" rel="noopener" data-ev="como_llegar_visitanos">Cómo llegar</a>
+        </div>
+      </div>
+
+      <div class="dato">
+        <p class="et">Horario</p>
+        <ul class="horario">
+          <li><span>Lunes a domingo</span><strong>12:00 – 23:00</strong></li>
+        </ul>
+        <p style="margin-top:10px;color:var(--tinta-suave);font-size:15px">Abrimos los siete días, incluidos festivos.</p>
+      </div>
+
+      <div class="dato">
+        <p class="et">WhatsApp</p>
+        <p><a href="https://wa.me/524921778889" target="_blank" rel="noopener" data-ev="whatsapp_visitanos">492 177 8889</a></p>
+        <p style="margin-top:10px;color:var(--tinta-suave);font-size:15px">Dudas, pedidos grandes y facturación.</p>
+      </div>
+
+      <div class="dato">
+        <p class="et">A domicilio</p>
+        <p style="color:var(--tinta-suave);font-size:15px">Búscanos como <strong style="color:var(--tinta)">Los Chitos</strong> en:</p>
+        <div class="apps">
+          <span class="app">Uber Eats</span>
+          <span class="app">DiDi Food</span>
+          <span class="app">Rappi</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACTURACIÓN -------------------------------------------------- -->
+<section class="banda banda--amarilla" id="factura">
+  <div class="dentro">
+    <p class="ojo">Facturación</p>
+    <h2>¿Necesitas factura?</h2>
+    <p class="bajada">Mándanos un WhatsApp con estos cinco datos y te la generamos dentro de las siguientes 24 horas.</p>
+    <div class="pasos">
+      <div class="paso">Constancia de Situación Fiscal</div>
+      <div class="paso">Ticket de consumo</div>
+      <div class="paso">Forma de pago que usaste</div>
+      <div class="paso">Uso de CFDI</div>
+      <div class="paso">Correo electrónico</div>
+    </div>
+    <div class="btns">
+      <a class="btn btn--rojo" href="https://wa.me/524921778889" target="_blank" rel="noopener" data-ev="whatsapp_factura">Pedir mi factura</a>
+    </div>
+  </div>
+</section>
+
+<!-- PIE ---------------------------------------------------------- -->
+<footer class="pie">
+  <div class="dentro">
+    <img src="img/logo-t.png" alt="Los Chitos">
+    <p style="font-family:var(--display);font-weight:600;font-size:19px">Pa' los antojitos</p>
+    <div class="redes">
+      <a class="red" href="https://www.instagram.com/" target="_blank" rel="noopener" data-ev="red_instagram">Instagram</a>
+      <a class="red" href="https://www.facebook.com/" target="_blank" rel="noopener" data-ev="red_facebook">Facebook</a>
+      <a class="red" href="https://www.tiktok.com/" target="_blank" rel="noopener" data-ev="red_tiktok">TikTok</a>
+      <a class="red" href="https://maps.app.goo.gl/ZBdXawP2Q5tKkXSF7" target="_blank" rel="noopener" data-ev="red_google">Google Maps</a>
+    </div>
+    <small>Av. Universidad 289 B, La Loma, Zacatecas, Zac., C.P. 98068 · Todos los días de 12:00 a 23:00<br>Los precios pueden cambiar sin previo aviso.</small>
+  </div>
+</footer>
+
+<!-- MEDICIÓN: Google Analytics 4 --------------------------------- -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=ID_DE_GA4"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'ID_DE_GA4');   /* <-- pon aquí tu ID de GA4 (G-XXXXXXXXXX) */
+</script>
+
+<script>
+(function(){
+  'use strict';
+
+  /* --- medición de clics ------------------------------------- */
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('[data-ev]');
+    if(!el) return;
+    try{ gtag('event','clic',{ elemento: el.dataset.ev }); }catch(err){}
+  });
+
+  /* --- menú por categorías ----------------------------------- */
+  var tabs   = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  var cartas = Array.prototype.slice.call(document.querySelectorAll('[data-panel]'));
+
+  function mostrar(cat){
+    tabs.forEach(function(t){ t.setAttribute('aria-selected', String(t.dataset.cat === cat)); });
+    cartas.forEach(function(c){ c.hidden = (c.dataset.panel !== cat); });
+    try{ gtag('event','ver_categoria_menu',{ categoria: cat }); }catch(err){}
+  }
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){ mostrar(t.dataset.cat); });
+  });
+
+  /* --- qué secciones alcanza a ver la gente ------------------- */
+  if('IntersectionObserver' in window){
+    var vistas = {};
+    var obs = new IntersectionObserver(function(entradas){
+      entradas.forEach(function(en){
+        if(en.isIntersecting && !vistas[en.target.id]){
+          vistas[en.target.id] = true;
+          try{ gtag('event','ver_seccion',{ seccion: en.target.id }); }catch(err){}
+        }
+      });
+    }, { threshold: 0.35 });
+    ['nosotros','menu','ninos','local','visitanos','factura'].forEach(function(id){
+      var s = document.getElementById(id);
+      if(s) obs.observe(s);
+    });
+  }
+
+  /* --- abierto / cerrado en este momento --------------------- */
+  (function(){
+    var estado = document.getElementById('estado');
+    var punto  = document.getElementById('punto');
+    if(!estado || !punto) return;
+    var ahora, h;
+    try{
+      ahora = new Date(new Date().toLocaleString('en-US',{ timeZone:'America/Mexico_City' }));
+      h = ahora.getHours() + ahora.getMinutes()/60;
+    }catch(err){ return; }
+    if(h >= 12 && h < 23){
+      estado.textContent = 'Abierto ahora · cerramos a las 23:00';
+    }else{
+      estado.textContent = 'Cerrado ahora · abrimos a las 12:00';
+      punto.classList.add('cerrado');
+    }
+  })();
+
+})();
+</script>
+
+</body>
+</html>
